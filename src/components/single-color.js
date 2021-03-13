@@ -21,11 +21,14 @@ const SingleColor = ({ rgb, weight, index, hexColor }) => {
 
   return (
     <article
-      className={`color ${index > 10 && "color-light"}`}
+      className={`color ${index >= 10 && "color-light"}`}
       style={{ backgroundColor: `rgb(${bcg})` }}
       onClick={copyToClipboard}
     >
-      <p className="percent-value">{weight}%</p>
+      <p className="percent-value">
+        {index < 10 ? "-" : index > 10 ? "+" : ""}
+        {weight}%
+      </p>
       <p className="color-value">{hexValue}</p>
       {alert && <p className="alert">copied to clipboard</p>}
     </article>
